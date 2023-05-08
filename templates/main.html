@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>my main page</title>
+        <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+        <style>
+            
+            h2 {
+              color: red;
+              text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Main Page: This is jinja template page main.html</h1>
+        <h2>{{myData}}</h2>
+        <h3 style="color:purple; font-size: 24pt;">request: {{request}}</h3>
+        </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head><meta charset="utf-8">
+	<title>Send PUT Request</title>
+	<script>
+		function sendPOST() {
+			var xhr = new XMLHttpRequest();
+			var url = "http://127.0.0.1:8000/items/123";
+			xhr.open("PUT", url, true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.onreadystatechange = function () {
+			    if (xhr.readyState === 4 && xhr.status === 200) {
+			        console.log(xhr.responseText);
+			    }
+			};
+			var data = JSON.stringify({
+				"item_id": 123,
+				"name": "Sample Item",
+				"price": 10.99,
+				"is_offer": true
+			});
+			xhr.send(data);
+		}
+	</script>
+</head>
+<body>
+	<button onclick="sendPOST()">Send Put Request</button>
+</body>
+</html>
