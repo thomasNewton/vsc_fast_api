@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: fastapi-jinja
+Version: 0.2.0
+Summary: Adds integration of the Jinja2 template language to FastAPI.
+Home-page: https://github.com/NexSabre/fastapi-jinja
+Author: Nex Sabre
+Author-email: nexsabre@protonmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: fastapi
+Requires-Dist: jinja2
+
+UNKNOWN
+
+

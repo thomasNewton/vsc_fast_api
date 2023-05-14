@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Table</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .sortable {
+            cursor: pointer;
+        }
+        .asc:after {
+            content: " ▲";
+        }
+        .desc:after {
+            content: " ▼";
+        }
+    </style>
+    
+    <script>
+        
+        $(document).ready(function() {
+            $("th.sortable").click(function() {
+                var table = $(this).parents("table").eq(0);
+                var rows = table.find("tr:gt(0)").toArray().sort(compare($(this).index()));
+                this.asc = !this.asc;
+                if (!this.asc){
+                    rows = rows.reverse();
+                }
+                for (var i = 0; i < rows.length; i++){
+                    table.append(rows[i]);
+                }
+                $("th.sortable").removeClass("asc desc");
+                if (this.asc) {
+                    $(this).addClass("asc");
+                } else {
+                    $(this).addClass("desc");
+                }
+            });
+        });
+
+        function compare(index) {
+            return function(a, b) {
+                var valA = getCellValue(a, index);
+                var valB = getCellValue(b, index);
+                return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB);
+            }
+        }
+
+        function getCellValue(row, index) {
+            return $(row).children("td").eq(index).text();
+        }
+   
+
+
+
+
+    </script>
+  
+
+
+</head>
+<body>
+    <h1>User Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th class="sortable">Username</th>
+                <th class="sortable">Roll</th>
+                <th class="sortable">First Name</th>
+                <th class="sortable">Last Name</th>
+                <th class="sortable">User ID</th>
+                <th class="sortable">Password</th>
+                <th class="sortable">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in data %}
+                <tr>
+                    <td>{{ user["username"] }}</td>
+                    <td>{{ user["roll"] }}</td>
+                    <td>{{ user["first"] }}</td>
+                    <td>{{ user["last"] }}</td>
+                    <td>{{ user["user_id"] }}</td>
+                    <td>{{ user["password"] }}</td>
+                    <td>{{ user["email"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
